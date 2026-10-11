@@ -36,12 +36,60 @@ Requires Python 3.9 or newer.
 ```bash
 git clone https://github.com/<your-account>/chocolate-cbc-analysis.git
 cd chocolate-cbc-analysis
-pip install -e .
+```
+
+### With uv (recommended)
+
+[uv](https://docs.astral.sh/uv/) creates the virtual environment, installs the
+package in editable mode and pins every dependency version in `uv.lock`.
+
+Install uv once:
+
+```bash
+# Linux / macOS
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Then, from the repository root:
+
+```bash
+uv sync --extra progress
+```
+
+This creates `.venv/`, installs the `chocolate` package in editable mode with
+its dependencies, the optional `tqdm` progress bars and the `dev` tools
+(`black`, `ruff`). Use `uv sync --no-dev` to skip the dev tools.
+
+Run a script inside the environment without activating it:
+
+```bash
+uv run python scripts/01_overview.py
+```
+
+or activate it as usual (`source .venv/bin/activate` on Linux / macOS,
+`.venv\Scripts\activate` on Windows).
+
+### With venv and pip
+
+```bash
+python -m venv .venv
+# Linux / macOS
+source .venv/bin/activate
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+pip install -e ".[progress]"
+pip install --group dev   # optional, requires pip >= 25.1
 ```
 
 The `-e` flag installs the package in editable mode: Python records the
 location of the source instead of copying it, so any change to the code takes
 effect immediately.
+
+### Configuration
 
 Then create your local configuration:
 

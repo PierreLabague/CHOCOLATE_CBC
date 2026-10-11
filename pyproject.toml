@@ -25,6 +25,10 @@ dependencies = [
 
 [project.optional-dependencies]
 progress = ["tqdm>=4.60"]
+
+# Development tools, not installed for end users.
+# `uv sync` installs this group by default; with pip >= 25.1 use `--group dev`.
+[dependency-groups]
 dev = ["black", "ruff"]
 
 [tool.setuptools.packages.find]
