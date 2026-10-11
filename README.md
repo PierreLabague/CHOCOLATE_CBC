@@ -14,7 +14,7 @@ reproduced, inspected and reused by someone who did not run the experiment.
 The processing is a four-stage pipeline:
 
 1. **Acquisition** — a Phantom high-speed camera behind a PHASICS SID4
-   four-wave lateral shearing interferometer records the interferograms of
+   four-wave lateral shearing interferometer (kHz-SID4)  records the interferograms of
    both beams around each laser shot.
 2. **Wavefront analysis** — the SID4 software projects each frame on the
    Zernike basis up to radial order 4 and exports one XML file per frame.
