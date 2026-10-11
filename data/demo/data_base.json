@@ -1,0 +1,84 @@
+{
+    "__meta": {
+        "AMPLI": {
+            "45A": "boolean",
+            "45B": "boolean",
+            "108A": "boolean",
+            "108B": "boolean"
+        },
+        "PHASICS": {
+            "resolution": "384x184",
+            "frame_rate": "Hz",
+            "exposure": "\u00b5s",
+            "trigg": "s",
+            "cine_beginning": "Nb_pict",
+            "cine_end": "Nb_pict"
+        }
+    },
+
+
+    "2025-12-05-14-23": {
+        "AMPLI": {
+            "45A": 0,
+            "45B": 0,
+            "108A": 1,
+            "108B": 1
+        },
+        "PHASICS": {
+            "resolution": "384x232",
+            "frame_rate": 66000,
+            "exposure": 4,
+            "trigg": 0,
+            "cine_beginning": -4000,
+            "cine_end": 4000
+        }
+    },
+        "2025-12-05-14-45": {
+        "AMPLI": {
+            "45A": 0,
+            "45B": 0,
+            "108A": 1,
+            "108B": 1
+        },
+        "PHASICS": {
+            "resolution": "384x232",
+            "frame_rate": 66000,
+            "exposure": 4,
+            "trigg": 0,
+            "cine_beginning": -4000,
+            "cine_end": 4000
+        }
+    },
+    "2025-12-05-16-06": {
+        "AMPLI": {
+            "45A": 1,
+            "45B": 1,
+            "108A": 0,
+            "108B": 0
+        },
+        "PHASICS": {
+            "resolution": "384x232",
+            "frame_rate": 66000,
+            "exposure": 8,
+            "trigg": 0,
+            "cine_beginning": -4000,
+            "cine_end": 4000
+        }
+    },
+    "2025-12-05-16-12": {
+        "AMPLI": {
+            "45A": 1,
+            "45B": 1,
+            "108A": 0,
+            "108B": 0
+        },
+        "PHASICS": {
+            "resolution": "384x232",
+            "frame_rate": 66000,
+            "exposure": 8,
+            "trigg": 0,
+            "cine_beginning": -4000,
+            "cine_end": 4000
+        }
+    }
+}
