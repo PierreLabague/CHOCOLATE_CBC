@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------------------
+# CHOCOLATE 2 analysis configuration.
+#
+# Copy this file to config/config.yaml and edit the values below.
+# config/config.yaml is ignored by git, so your local paths are never
+# published. This file, with its dummy path, is the one that is tracked.
+# ---------------------------------------------------------------------------
+
+# Directory containing data_base.json, PHASICS/ and RESULTS/.
+# Windows users: use forward slashes, they work fine in Python.
+root: "D:/DATA CHOCOLATE2"
+
+# Where generated figures are written. Relative paths are resolved from the
+# directory the script is run from.
+figures_dir: "figures"
+
+# Normalisation used to express Zernike coefficients:
+#   rms - Noll / OSA-ANSI orthonormal basis        (SID4 "RMS mode")
+#   amp - bare polynomial, max|Z| = 1              (SID4 "PtV mode")
+#   ptv - scaled to the true peak-to-valley excursion of each mode
+# See src/chocolate/zernike.py for the exact definitions and factors.
+zernike_mode: "rms"
+
+# Reference time used to zero every temporal trace, in milliseconds,
+# relative to the laser shot. Negative means before the shot.
+time_ref_ms: -0.5
+
+# Geometric factor converting a SID4 tilt given in mrad into a
+# peak-to-valley optical path difference expressed in waves.
+coef_tilt_mrad_to_ptv: 3.47
+
+# Probe wavelength of the wavefront sensor, in nanometres.
+# Read back from the SID4 user profile of the exported XML files.
+wavelength_nm: 1064

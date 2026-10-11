@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: CHOCOLATE 2 coherent beam combining analysis
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - given-names: Pierre
+    family-names: Lebegue
+    affiliation: LULI
+repository-code: "https://github.com/<your-account>/chocolate-cbc-analysis"
+abstract: >-
+  Analysis pipeline for the CHOCOLATE 2 experiment: wavefront and piston
+  stability of two high-energy Nd:glass amplification chains measured with a
+  PHASICS SID4 interferometer, and the resulting coherent beam combining
+  efficiency estimates.
+keywords:
+  - coherent beam combining
+  - wavefront sensing
+  - Zernike polynomials
+  - high-energy lasers
+license: MIT
+version: 1.0.0
