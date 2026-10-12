@@ -1019,10 +1019,17 @@ def _statistics(carte):
 rms_measured, ptv_measured = _statistics(measured)
 rms_reconstructed, ptv_reconstructed = _statistics(reconstructed)
 rms_residual, ptv_residual = _statistics(residual)
+# Interference patterns of the two beams once combined, for each of the two
+# wavefronts: the measured one (column 1) and the Zernike-reconstructed one
+# (column 2). Same grey/orange intensity scale on both so they can be
+# compared by eye. Piston is already removed from both maps.
+interference_measured = 0.5 * (1 + np.cos(2 * np.pi * measured))
+interference_reconstructed = 0.5 * (1 + np.cos(2 * np.pi * reconstructed))
 
 fig, axs = plt.subplots(2, 2, figsize=(FIGURE_WIDTH, 5.4))
 fig.subplots_adjust(hspace=0.35)
 
+# ---- Row 1: wavefronts (unchanged) -------------------------------------------
 image = axs[0, 0].imshow(measured, cmap=CMAP_WAVEFRONT, vmin=-limit, vmax=limit)
 axs[0, 0].set_title(
     f"Measured, RWMC — {eff_rwmc[index] * 100:.1f} %\n"
@@ -1044,26 +1051,24 @@ fig.colorbar(image, ax=axs[0, 1], fraction=0.046, pad=0.04).set_label(
     "Waves", fontsize=7
 )
 
-image = axs[1, 0].imshow(
-    residual, cmap=CMAP_WAVEFRONT, vmin=-limit_residual, vmax=limit_residual
-)
+# ---- Row 2: CBC intensity for the wavefront of the column above --------------
+image = axs[1, 0].imshow(interference_measured, cmap=CMAP_INTERFERENCE, vmin=0, vmax=1)
 axs[1, 0].set_title(
-    f"Difference, truncation — {relative_residual:.0f} % of the measured RMS\n"
-    f"{rms_residual:.3f} $\\lambda$ RMS, {ptv_residual:.3f} $\\lambda$ PtV",
+    f"CBC intensity, measured wavefront\n"
+    f"mean {np.nanmean(interference_measured) * 100:.1f} % = RWMC efficiency",
     fontsize=8,
 )
 fig.colorbar(image, ax=axs[1, 0], fraction=0.046, pad=0.04).set_label(
-    "Waves", fontsize=7
+    "Intensity", fontsize=7
 )
 
-# The interference pattern is a map of light, not of phase, so it gets a
-# grey scale: that is what a detector would record, and it keeps the panel
-# visually apart from the three wavefront maps around it.
-interference = 0.5 * (1 + np.cos(2 * np.pi * measured))
-image = axs[1, 1].imshow(interference, cmap=CMAP_INTERFERENCE, vmin=0, vmax=1)
+image = axs[1, 1].imshow(
+    interference_reconstructed, cmap=CMAP_INTERFERENCE, vmin=0, vmax=1
+)
 axs[1, 1].set_title(
-    f"Interference pattern, measured\n"
-    f"mean {np.nanmean(interference) * 100:.1f} % = RWMC efficiency",
+    f"CBC intensity, reconstructed wavefront\n"
+    f"mean {np.nanmean(interference_reconstructed) * 100:.1f} % "
+    f"(ZWR efficiency {eff_zwr[index] * 100:.1f} %)",
     fontsize=8,
 )
 fig.colorbar(image, ax=axs[1, 1], fraction=0.046, pad=0.04).set_label(
@@ -1078,7 +1083,6 @@ fig.suptitle(
 )
 
 written.append(save_figure(fig, config.figures_dir / "efficiency_models_wavefront.pdf"))
-
 
 # =============================================================================
 # %% MANUSCRIPT FIGURE — Efficiency over time, and the error of each model
