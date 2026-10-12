@@ -6,9 +6,13 @@
 # published. This file, with its dummy path, is the one that is tracked.
 # ---------------------------------------------------------------------------
 
-# Directory containing data_base.json, PHASICS/ and RESULTS/.
+# Data directory, the one containing data_base.json and RESULTS/.
+# The default is the demonstration dataset shipped with the repository.
+# Replace it with the path of the dataset you chose, for instance
+# "D:/DATA CHOCOLATE2". Relative paths are resolved from the directory the
+# script is run from, so run the scripts from the repository root.
 # Windows users: use forward slashes, they work fine in Python.
-root: "D:/DATA CHOCOLATE2"
+root: "data/demo"
 
 # Where generated figures are written. Relative paths are resolved from the
 # directory the script is run from.

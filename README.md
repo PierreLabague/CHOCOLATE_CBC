@@ -31,17 +31,17 @@ Each measurement is identified by the time it was taken, in the form
 
 ## Installation
 
-Requires Python 3.9 or newer.
-
 ```bash
-git clone https://github.com/<your-account>/chocolate-cbc-analysis.git
-cd chocolate-cbc-analysis
+git clone https://github.com/PierreLabague/CHOCOLATE_CBC.git
+cd CHOCOLATE_CBC
 ```
 
 ### With uv (recommended)
 
 [uv](https://docs.astral.sh/uv/) creates the virtual environment, installs the
-package in editable mode and pins every dependency version in `uv.lock`.
+package in editable mode and pins every dependency version in `uv.lock`. No
+Python installation is needed beforehand: if none suitable is found, uv
+downloads one that satisfies the `requires-python` of `pyproject.toml`.
 
 Install uv once:
 
@@ -73,6 +73,8 @@ or activate it as usual (`source .venv/bin/activate` on Linux / macOS,
 
 ### With venv and pip
 
+Requires Python 3.9 or newer, already installed on the machine.
+
 ```bash
 python -m venv .venv
 # Linux / macOS
@@ -97,14 +99,18 @@ Then create your local configuration:
 cp config/config.example.yaml config/config.yaml
 ```
 
-and edit the `root` entry so that it points to your data directory, the one
-containing `data_base.json` and `RESULTS/` (see [Data](#data) for the full
-layout). To try the code without downloading anything, point it to the
-demonstration dataset shipped with the repository:
+By default, its `root` entry points to the demonstration dataset shipped
+with the repository, so the code runs out of the box from the repository
+root:
 
 ```yaml
-root: "data/demo"   # relative paths are resolved from where the script is run
+root: "data/demo"
 ```
+
+To work on another dataset, replace it with the path of the data directory
+you chose, the one containing `data_base.json` and `RESULTS/` (see
+[Data](#data) for the full layout). Relative paths are resolved from the
+directory the script is run from.
 
 Figures use the Open Sans font. If it is not installed, matplotlib falls back
 to DejaVu Sans and everything still works.
